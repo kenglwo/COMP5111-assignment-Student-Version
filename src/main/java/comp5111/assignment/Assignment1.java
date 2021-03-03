@@ -26,7 +26,7 @@ public class Assignment1 {
 							String newClassName = "comp5111.assignment.cut." + classNames[i];
 							classNames[i] = newClassName;
 
-							System.out.println("$$$ in Assignment1 $$$");
+							System.out.println("### class name ###");
 							System.out.println(newClassName);
 						}
 						
@@ -36,7 +36,7 @@ public class Assignment1 {
 					
 
             // TODO run tests on instrumented classes to generate coverage report
-						// org.junit.runner.JUnitCore.runClasses("comp5111.assignment.cut.ToolBox.class");
+						// org.junit.runner.JUnitCore.runClasses("comp5111.assignment.cut.RegressionTest.class");
 
 
         } else if (args[0].compareTo("1") == 0) {

@@ -29,4 +29,4 @@ find "$ROOT_DIR"/src/main/java -name "*.java" -print0 | xargs -0 \
 # java -cp .:lib/soot-4.2.1-jar-with-dependencies.jar:lib/junit-4.12.jar:target/classes:src/test castle.comp5111.example.EntryPoint
 
 # java -cp .:lib/soot-4.2.1-jar-with-dependencies.jar:lib/junit-4.12.jar:target/classes:src/test comp5111.assignment.cut.EntryPoint
-java -cp .:lib/soot-4.2.1-jar-with-dependencies.jar:lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar:target/classes comp5111.assignment.Assignment1 0 ToolBox 
+java -cp .:lib/soot-4.2.1-jar-with-dependencies.jar:lib/junit-4.12.jar:lib/hamcrest-core-1.3.jar:target/classes comp5111.assignment.Assignment1 0 ToolBox ToolBox$ArrayTools ToolBox$CharSequenceTools ToolBox$CharTools ToolBox$LocaleTools ToolBox$RegExTools ToolBox$StringTools
