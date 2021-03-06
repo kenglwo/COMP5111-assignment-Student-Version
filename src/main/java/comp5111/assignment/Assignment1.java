@@ -1,5 +1,7 @@
 package comp5111.assignment;
 import comp5111.assignment.cut.EntryPoint;
+import comp5111.assignment.cut.EntryPoint1;
+import comp5111.assignment.cut.EntryPoint2;
 
 import java.util.Arrays;
 
@@ -18,17 +20,18 @@ public class Assignment1 {
         // these args will be passed into soot.
         String[] classNames = Arrays.copyOfRange(args, 1, args.length);
 
-				// System.err.println(classNames);
+				for (int i = 0; i < classNames.length; i++) {
+					String newClassName = "comp5111.assignment.cut." + classNames[i];
+					classNames[i] = newClassName;
+
+					// System.out.println("### class name ###");
+					// System.out.println(newClassName);
+				}
+
+				System.err.println(classNames);
 
         if (args[0].compareTo("0") == 0) {
 
-						for (int i = 0; i < classNames.length; i++) {
-							String newClassName = "comp5111.assignment.cut." + classNames[i];
-							classNames[i] = newClassName;
-
-							System.out.println("### class name ###");
-							System.out.println(newClassName);
-						}
 						
 						EntryPoint.main(classNames);
 
@@ -41,13 +44,15 @@ public class Assignment1 {
 
         } else if (args[0].compareTo("1") == 0) {
             // TODO invoke your branch coverage instrument function
-
             // TODO run tests on instrumented classes to generate coverage report
+						
+						EntryPoint1.main(classNames);
 
         } else if (args[0].compareTo("2") == 0) {
             // TODO invoke your line coverage instrument function
-
             // TODO run tests on instrumented classes to generate coverage report
+						
+						EntryPoint2.main(classNames);
 
         }
     }

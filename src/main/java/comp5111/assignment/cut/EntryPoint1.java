@@ -13,8 +13,7 @@ import java.io.PrintWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-
-public class EntryPoint {
+public class EntryPoint1 {
     public static void main(String[] args) {
 
 				instrumentWithSoot(args);
@@ -22,14 +21,14 @@ public class EntryPoint {
         // after instrument, we run Junit tests
         runJunitTests();
         // after junit test running, we have already get the counting in the Counter class
-        System.out.println("Invocation to statement: " + Counter.getNumStaticInvocations());
+        System.out.println("Invocation to branch: " + Counter.getNumStaticInvocations());
         // System.out.println("Invocation to instance methods: " + Counter.getNumInstanceInvocations());
 
 				try {
 					FileWriter file = new FileWriter("./coverage-report.txt", true);
 					PrintWriter pw = new PrintWriter(new BufferedWriter(file));
 					
-					pw.println("Invocation to statement: " + Counter.getNumStaticInvocations());
+					pw.println("Invocation to branch: " + Counter.getNumStaticInvocations());
 					
 					pw.close();
 				} catch (IOException e){
@@ -62,7 +61,7 @@ public class EntryPoint {
         /* add a phase to transformer pack by call Pack.add */
         Pack jtp = PackManager.v().getPack("jtp");
 
-        Instrumenter instrumenter = new Instrumenter();
+        Instrumenter1 instrumenter = new Instrumenter1();
         jtp.add(new Transform("jtp.instrumenter", instrumenter));
 
 

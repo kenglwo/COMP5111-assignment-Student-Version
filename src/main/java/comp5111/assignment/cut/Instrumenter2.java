@@ -8,7 +8,7 @@ import soot.util.Chain;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Instrumenter extends BodyTransformer {
+public class Instrumenter2 extends BodyTransformer {
 
     /* some internal fields */
     static SootClass counterClass;
@@ -17,7 +17,7 @@ public class Instrumenter extends BodyTransformer {
     static {
         counterClass = Scene.v().loadClassAndSupport("comp5111.assignment.cut.Counter");
         addStaticInvocationMethod = counterClass.getMethod("void addStaticInvocation(int)");
-        addInstanceInvocationMethod = counterClass.getMethod("void addInstanceInvocation(int)");
+        // addInstanceInvocationMethod = counterClass.getMethod("void addInstanceInvocation(int)");
     }
 
 
@@ -57,13 +57,9 @@ public class Instrumenter extends BodyTransformer {
             // NOTE: there are two kinds of return statements, with or without return value
 						
             // if (stmt instanceof ReturnStmt || stmt instanceof ReturnVoidStmt) {
-                // now we reach the real instruction
-                // call Chain.insertBefore() to insert instructions
-                //
-								// TODO: Statement coverage
-                // 1. first, make a new invoke expression
+            if (stmt instanceof GotoStmt) {
+                // TODO: Line coverage
                 InvokeExpr incExpr = null;
-
 								incExpr = Jimple.v().newStaticInvokeExpr(
 												addStaticInvocationMethod.makeRef(), IntConstant.v(1));
 
@@ -73,23 +69,23 @@ public class Instrumenter extends BodyTransformer {
                 // 3. insert new statement into the chain, before return statement
                 // (we are mutating the unit chain).
                 units.insertBefore(incStmt, stmt);
-            // }
-						// // ##############################
-            // if (stmt instanceof ReturnStmt || stmt instanceof ReturnVoidStmt) {
+            }
+
+            // // if (stmt instanceof ReturnStmt || stmt instanceof ReturnVoidStmt) {
             //     // now we reach the real instruction
             //     // call Chain.insertBefore() to insert instructions
             //     //
             //     // 1. first, make a new invoke expression
             //     InvokeExpr incExpr = null;
-            //     if (method.isStatic()) {
+            //     // if (method.isStatic()) {
             //         // if current method is static, we add static method invocation counter
             //         incExpr = Jimple.v().newStaticInvokeExpr(
             //                 addStaticInvocationMethod.makeRef(), IntConstant.v(1));
-            //     } else {
+            //     // } else {
             //         // if current method is instance method, we add instance method invocation counter
-            //         incExpr = Jimple.v().newStaticInvokeExpr(
-            //                 addInstanceInvocationMethod.makeRef(), IntConstant.v(1));
-            //     }
+            //         // incExpr = Jimple.v().newStaticInvokeExpr(
+            //                 // addInstanceInvocationMethod.makeRef(), IntConstant.v(1));
+            //     // }
             //
             //     // 2. then, make a invoke statement
             //     Stmt incStmt = Jimple.v().newInvokeStmt(incExpr);
@@ -97,7 +93,8 @@ public class Instrumenter extends BodyTransformer {
             //     // 3. insert new statement into the chain, before return statement
             //     // (we are mutating the unit chain).
             //     units.insertBefore(incStmt, stmt);
-            // }
+            // // }
+
         }
     }
 }

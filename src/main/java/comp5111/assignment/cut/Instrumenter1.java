@@ -8,7 +8,7 @@ import soot.util.Chain;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Instrumenter extends BodyTransformer {
+public class Instrumenter1 extends BodyTransformer {
 
     /* some internal fields */
     static SootClass counterClass;
@@ -52,18 +52,11 @@ public class Instrumenter extends BodyTransformer {
             // cast back to a statement.
             Stmt stmt = (Stmt) stmtIt.next();
 
-            // there are many kinds of statements, here we are only
-            // interested in return statements
-            // NOTE: there are two kinds of return statements, with or without return value
 						
-            // if (stmt instanceof ReturnStmt || stmt instanceof ReturnVoidStmt) {
-                // now we reach the real instruction
-                // call Chain.insertBefore() to insert instructions
-                //
-								// TODO: Statement coverage
+						// TODO: Branch coverage
+            if (stmt instanceof IfStmt) {
                 // 1. first, make a new invoke expression
                 InvokeExpr incExpr = null;
-
 								incExpr = Jimple.v().newStaticInvokeExpr(
 												addStaticInvocationMethod.makeRef(), IntConstant.v(1));
 
@@ -73,31 +66,7 @@ public class Instrumenter extends BodyTransformer {
                 // 3. insert new statement into the chain, before return statement
                 // (we are mutating the unit chain).
                 units.insertBefore(incStmt, stmt);
-            // }
-						// // ##############################
-            // if (stmt instanceof ReturnStmt || stmt instanceof ReturnVoidStmt) {
-            //     // now we reach the real instruction
-            //     // call Chain.insertBefore() to insert instructions
-            //     //
-            //     // 1. first, make a new invoke expression
-            //     InvokeExpr incExpr = null;
-            //     if (method.isStatic()) {
-            //         // if current method is static, we add static method invocation counter
-            //         incExpr = Jimple.v().newStaticInvokeExpr(
-            //                 addStaticInvocationMethod.makeRef(), IntConstant.v(1));
-            //     } else {
-            //         // if current method is instance method, we add instance method invocation counter
-            //         incExpr = Jimple.v().newStaticInvokeExpr(
-            //                 addInstanceInvocationMethod.makeRef(), IntConstant.v(1));
-            //     }
-            //
-            //     // 2. then, make a invoke statement
-            //     Stmt incStmt = Jimple.v().newInvokeStmt(incExpr);
-            //
-            //     // 3. insert new statement into the chain, before return statement
-            //     // (we are mutating the unit chain).
-            //     units.insertBefore(incStmt, stmt);
-            // }
+            }
         }
     }
 }
