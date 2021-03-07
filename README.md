@@ -4,14 +4,11 @@
 execute the script /scripts/gen-tests.sh
 
 # Task 1.2
-I used EclEmma on Eclipse
+I used EclEmma on Eclipse. Screenshots are in $PROJECT_ROOT/screenshots/
 
-# Task 2
-execute the scirpt /scripts/instrument-run-test.sh adding a parameter 0 in the last command
+# Task 2 and 3
+execute the scirpt /scripts/instrument-run-test.sh.
+Coverage report is output into $PROJECT_ROOT/coverage-report.txt
 
-# Task 3
-execute the scirpt /scripts/instrument-run-test.sh adding a parameter 1 in the last command
-
-
-# Bonus Task
-execute the scirpt /scripts/instrument-run-test.sh adding a parameter 2 in the last command
+<!-- # Bonus Task -->
+<!-- execute the scirpt /scripts/instrument-run-test.sh adding a parameter 2 in the last command -->
