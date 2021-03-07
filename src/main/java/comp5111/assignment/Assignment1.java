@@ -32,25 +32,13 @@ public class Assignment1 {
 
         if (args[0].compareTo("0") == 0) {
 
-						
 						EntryPoint.main(classNames);
 
-            // TODO invoke your statement coverage instrument function
-					
-
-            // TODO run tests on instrumented classes to generate coverage report
-						// org.junit.runner.JUnitCore.runClasses("comp5111.assignment.cut.RegressionTest.class");
-
-
         } else if (args[0].compareTo("1") == 0) {
-            // TODO invoke your branch coverage instrument function
-            // TODO run tests on instrumented classes to generate coverage report
-						
+
 						EntryPoint1.main(classNames);
 
         } else if (args[0].compareTo("2") == 0) {
-            // TODO invoke your line coverage instrument function
-            // TODO run tests on instrumented classes to generate coverage report
 						
 						EntryPoint2.main(classNames);
 

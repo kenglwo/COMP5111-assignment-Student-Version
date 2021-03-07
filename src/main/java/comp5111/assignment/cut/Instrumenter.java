@@ -41,6 +41,9 @@ public class Instrumenter extends BodyTransformer {
         // get body's unit as a chain
         Chain<Unit> units = body.getUnits();
 
+				// List branches = body.branches();
+				// System.out.println(branches);
+
         // get a snapshot iterator of the unit since we are going to
         // mutate the chain when iterating over it.
         //
@@ -57,6 +60,7 @@ public class Instrumenter extends BodyTransformer {
             // NOTE: there are two kinds of return statements, with or without return value
 						
             // if (stmt instanceof ReturnStmt || stmt instanceof ReturnVoidStmt) {
+            if (stmt instanceof Stmt ) {
                 // now we reach the real instruction
                 // call Chain.insertBefore() to insert instructions
                 //
@@ -73,7 +77,7 @@ public class Instrumenter extends BodyTransformer {
                 // 3. insert new statement into the chain, before return statement
                 // (we are mutating the unit chain).
                 units.insertBefore(incStmt, stmt);
-            // }
+            }
 						// // ##############################
             // if (stmt instanceof ReturnStmt || stmt instanceof ReturnVoidStmt) {
             //     // now we reach the real instruction

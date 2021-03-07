@@ -1,2 +1,10 @@
-Invocation to statement: 
-1024
+===== Statement Coverage =====
+Invocation to statement: 1024.0
+Total number of statement : 1927.0
+Coverage : 53.1396%
+
+===== Branch Coverage =====
+Total number of branch: 1835.0
+Invocation to branch: 1307
+Coverage: 71.22616%
+
